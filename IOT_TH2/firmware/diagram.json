@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "Student",
+  "editor": "wokwi",
+  "parts": [
+    {"type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -24.1, "left": 71.8, "attrs": {}},
+    {"type": "wokwi-led", "id": "led1", "top": 255.6, "left": 291.8, "attrs": {"color": "green"}},
+    {"type": "wokwi-resistor", "id": "r1", "top": 312, "left": 191.45, "rotate": 90, "attrs": {"value": "220"}},
+    {"type": "wokwi-dht22", "id": "dht", "top": -105.3, "left": -111, "attrs": {"temperature": "25", "humidity": "50"}},
+    {"type": "wokwi-hc-sr04", "id": "ultra", "top": -75.3, "left": 322.3, "attrs": {"distance": "100"}}
+  ],
+  "connections": [
+    ["esp:TX0", "$serialMonitor:RX", "", []],
+    ["esp:RX0", "$serialMonitor:TX", "", []],
+    ["dht:VCC", "esp:3V3", "red", ["v144", "h269.1"]],
+    ["dht:GND", "esp:GND.2", "black", ["v115.3"]],
+    ["dht:SDA", "esp:D15", "magenta", ["h0.1", "v149.1"]],
+    ["ultra:VCC", "esp:VIN", "cyan", ["v211.2", "h-316.8"]],
+    ["ultra:GND", "esp:GND.1", "black", ["h-1.2", "v105.7"]],
+    ["ultra:TRIG", "esp:D5", "blue", ["v86.4", "h-144.4", "v-172.8"]],
+    ["ultra:ECHO", "esp:D18", "orange", ["v67.2", "h-112.9", "v-163.2"]],
+    ["esp:D2", "r1:1", "green", []],
+    ["r1:2", "led1:A", "green", []],
+    ["led1:C", "esp:GND.1", "limegreen", ["h-28.4", "v-163.2", "h-96", "v-9.5"]]
+  ],
+  "serialMonitor": {"display": "always"},
+  "dependencies": {}
+}
